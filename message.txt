@@ -11,7 +11,7 @@ end
 -- Create Window
 local Window = Fluent:CreateWindow({
     Title = "Kenon Hub",
-    SubTitle = "Blox Fruits Script",
+    SubTitle = "Script by Khoidz",
     TabWidth = 120,
     Size = UDim2.fromOffset(600, 400),
     Acrylic = true,
@@ -126,54 +126,52 @@ end
 
 -- Farming Tab
 local farmingTab = Window:AddTab("Farming")
-farmingTab:AddToggle("Auto Farm Level", {
-    Title = "Enable Auto Farm Level",
-    Default = false,
-    Callback = function(value)
-        _G.AutoFarmLevel = value
-        if value then
+
+-- Auto Farm Level Button
+farmingTab:AddButton({
+    Title = "Start Auto Farm Level",
+    Callback = function()
+        _G.AutoFarmLevel = not _G.AutoFarmLevel
+        if _G.AutoFarmLevel then
             autoFarmLevel()
+            print("Auto Farm Level: ON")
+        else
+            print("Auto Farm Level: OFF")
         end
     end
 })
 
-farmingTab:AddToggle("Auto Farm Boss", {
-    Title = "Enable Auto Farm Boss",
-    Default = false,
-    Callback = function(value)
-        _G.AutoFarmBoss = value
-        if value then
+-- Auto Farm Boss Button
+farmingTab:AddButton({
+    Title = "Start Auto Farm Boss",
+    Callback = function()
+        _G.AutoFarmBoss = not _G.AutoFarmBoss
+        if _G.AutoFarmBoss then
             autoFarmBoss()
+            print("Auto Farm Boss: ON")
+        else
+            print("Auto Farm Boss: OFF")
         end
     end
 })
 
-farmingTab:AddToggle("Auto Farm Bone", {
-    Title = "Enable Auto Farm Bone",
-    Default = false,
-    Callback = function(value)
-        _G.AutoBone = value
-        if value then
+-- Auto Farm Bone Button
+farmingTab:AddButton({
+    Title = "Start Auto Farm Bone",
+    Callback = function()
+        _G.AutoBone = not _G.AutoBone
+        if _G.AutoBone then
             autoFarmBone()
+            print("Auto Farm Bone: ON")
+        else
+            print("Auto Farm Bone: OFF")
         end
     end
 })
 
-farmingTab:AddToggle("Fast Attack", {
+-- Fast Attack Button
+farmingTab:AddButton({
     Title = "Enable Fast Attack",
-    Default = false,
-    Callback = function(value)
-        _G.FastAttack = value
-        if value then
-            fastAttack()
-        end
-    end
-})
-
--- Menu and Appearance
-Window:AddTab("Appearance"):AddLabel("Kenon Hub UI - Modern and Optimized")
-Window:AddTab("Settings"):AddLabel("Press [END] to minimize the script.")
-
--- Final Touches
-Window:Show()
-print("Kenon Hub loaded successfully!")
+    Callback = function()
+        _G.FastAttack = not _G.FastAttack
+       
