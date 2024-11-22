@@ -8,10 +8,10 @@ if not success then
     return
 end
 
--- Create Window
+-- Create Main Window
 local Window = Fluent:CreateWindow({
     Title = "Kenon Hub",
-    SubTitle = "Script by Khoidz",
+    SubTitle = "Blox Fruits Script",
     TabWidth = 120,
     Size = UDim2.fromOffset(600, 400),
     Acrylic = true,
@@ -35,9 +35,9 @@ local replicatedStorage = game:GetService("ReplicatedStorage")
 local workspaceEnemies = game.Workspace:WaitForChild("Enemies")
 
 -- Global Toggles
+_G.AutoFarm = false
+_G.AutoBoss = false
 _G.AutoBone = false
-_G.AutoFarmLevel = false
-_G.AutoFarmBoss = false
 _G.FastAttack = false
 
 -- Functions
@@ -73,17 +73,62 @@ local function teleportToLocation(locationCFrame)
 end
 
 -- Auto Farm Logic
-local function autoFarmLevel()
+local function autoFarm()
     spawn(function()
-        while _G.AutoFarmLevel do
+        while _G.AutoFarm do
             pcall(function()
-                -- Set NPC position or adjust to current level
-                local questNPC = CFrame.new(0, 0, 0) -- Replace with specific NPC position
-                teleportToLocation(questNPC)
-                replicatedStorage.Remotes.CommF_:InvokeServer("StartQuest", "QuestNameHere", 1)
+                -- Farm Logic (Replace with your farming logic)
+                local enemy = findNearestEnemy()
+                if enemy then
+                    teleportToLocation(enemy.HumanoidRootPart.CFrame)
+                    attackEnemy(enemy)
+                end
+            end)
+            wait(0.1)
+        end
+    end)
+end
+
+-- Auto Boss Logic
+local function autoFarmBoss()
+    spawn(function()
+        while _G.AutoBoss do
+            pcall(function()
+                local bossPosition = CFrame.new(1000, 200, 1000) -- Replace with boss position
+                teleportToLocation(bossPosition)
+
+                local enemy = findNearestEnemy()
+                if enemy and enemy.Name == "BossNameHere" then
+                    attackEnemy(enemy)
+                end
+            end)
+            wait(0.1)
+        end
+    end)
+end
+
+-- Fast Attack Logic
+local function fastAttack()
+    spawn(function()
+        while _G.FastAttack do
+            pcall(function()
+                replicatedStorage.Remotes.CommF_:FireServer("FastAttack")
+            end)
+            wait(0.01) -- Adjust for speed
+        end
+    end)
+end
+
+-- Auto Bone Logic
+local function autoFarmBone()
+    spawn(function()
+        while _G.AutoBone do
+            pcall(function()
+                local bonePosition = CFrame.new(-9515.75, 174.85, 6079.4) -- Replace with Bone Farming location
+                teleportToLocation(bonePosition)
 
                 for _, enemy in pairs(workspaceEnemies:GetChildren()) do
-                    if enemy:FindFirstChild("HumanoidRootPart") and enemy:FindFirstChild("Humanoid") and enemy.Humanoid.Health > 0 then
+                    if enemy.Name == "Demonic Soul" or enemy.Name == "Living Zombie" then
                         attackEnemy(enemy)
                     end
                 end
@@ -93,85 +138,69 @@ local function autoFarmLevel()
     end)
 end
 
-local function autoFarmBoss()
-    spawn(function()
-        while _G.AutoFarmBoss do
-            pcall(function()
-                local bossCFrame = CFrame.new(1000, 100, 2000) -- Update to boss location
-                teleportToLocation(bossCFrame)
+-- Tabs and Features
+local farmingTab = Window:AddTab("Auto Farming")
+local utilityTab = Window:AddTab("Utilities")
 
-                for _, enemy in pairs(workspaceEnemies:GetChildren()) do
-                    if enemy:FindFirstChild("HumanoidRootPart") and enemy:FindFirstChild("Humanoid") and enemy.Humanoid.Health > 0 then
-                        if enemy.Name == "BossNameHere" then
-                            attackEnemy(enemy)
-                        end
-                    end
-                end
-            end)
-            wait(0.1)
-        end
-    end)
-end
-
-local function fastAttack()
-    spawn(function()
-        while _G.FastAttack do
-            pcall(function()
-                replicatedStorage.Remotes.CommF_:FireServer("FastAttack")
-            end)
-            wait(0.01) -- Adjust for attack speed
-        end
-    end)
-end
-
--- Farming Tab
-local farmingTab = Window:AddTab("Farming")
-
--- Auto Farm Level Button
-farmingTab:AddButton({
-    Title = "Start Auto Farm Level",
-    Callback = function()
-        _G.AutoFarmLevel = not _G.AutoFarmLevel
-        if _G.AutoFarmLevel then
-            autoFarmLevel()
-            print("Auto Farm Level: ON")
+-- Farming Features
+farmingTab:AddToggle("Auto Farm", {
+    Title = "Enable Auto Farm",
+    Default = false,
+    Callback = function(value)
+        _G.AutoFarm = value
+        if value then
+            autoFarm()
+            print("Auto Farm: ON")
         else
-            print("Auto Farm Level: OFF")
+            print("Auto Farm: OFF")
         end
     end
 })
 
--- Auto Farm Boss Button
-farmingTab:AddButton({
-    Title = "Start Auto Farm Boss",
-    Callback = function()
-        _G.AutoFarmBoss = not _G.AutoFarmBoss
-        if _G.AutoFarmBoss then
+farmingTab:AddToggle("Auto Farm Boss", {
+    Title = "Enable Auto Boss",
+    Default = false,
+    Callback = function(value)
+        _G.AutoBoss = value
+        if value then
             autoFarmBoss()
-            print("Auto Farm Boss: ON")
+            print("Auto Boss: ON")
         else
-            print("Auto Farm Boss: OFF")
+            print("Auto Boss: OFF")
         end
     end
 })
 
--- Auto Farm Bone Button
-farmingTab:AddButton({
-    Title = "Start Auto Farm Bone",
-    Callback = function()
-        _G.AutoBone = not _G.AutoBone
-        if _G.AutoBone then
+farmingTab:AddToggle("Auto Farm Bone", {
+    Title = "Enable Auto Bone",
+    Default = false,
+    Callback = function(value)
+        _G.AutoBone = value
+        if value then
             autoFarmBone()
-            print("Auto Farm Bone: ON")
+            print("Auto Bone: ON")
         else
-            print("Auto Farm Bone: OFF")
+            print("Auto Bone: OFF")
         end
     end
 })
 
--- Fast Attack Button
-farmingTab:AddButton({
+-- Utility Features
+utilityTab:AddToggle("Fast Attack", {
     Title = "Enable Fast Attack",
-    Callback = function()
-        _G.FastAttack = not _G.FastAttack
-       
+    Default = false,
+    Callback = function(value)
+        _G.FastAttack = value
+        if value then
+            fastAttack()
+            print("Fast Attack: ON")
+        else
+            print("Fast Attack: OFF")
+        end
+    end
+})
+
+-- Final Touches
+Window:Show()
+
+print("Kenon Hub initialized! Use the UI menu to control features.")
