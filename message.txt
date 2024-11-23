@@ -1,206 +1,184 @@
--- Load UI Library (Fallback Safe)
-local success, Fluent = pcall(function()
-    return loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/ui/refs/heads/main/.gitignore"))()
-end)
-
-if not success then
-    warn("Failed to load Fluent UI. Aborting script.")
-    return
-end
-
--- Create Main Window
-local Window = Fluent:CreateWindow({
-    Title = "Kenon Hub",
-    SubTitle = "Blox Fruits Script",
-    TabWidth = 120,
-    Size = UDim2.fromOffset(600, 400),
-    Acrylic = true,
+local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/ui/refs/heads/main/.gitignore"))()local Window = Fluent:CreateWindow({
+    Title = "Khoitong dz",
+    SubTitle = "Premium",
+    TabWidth = 110,
+    Size = UDim2.fromOffset(480, 320),
+    Acrylic = false,
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.End
-})
+-- Kenon Hub with Auto Farm Bone and Moon Phase Status (Calculating Moon Phase Percentage)
+-- Script created by khoitongdz
 
-print([[ 
-███████╗ █████╗ ███╗   ██╗
-██╔════╝██╔══██╗████╗  ██║
-█████╗  ███████║██╔██╗ ██║
-██╔══╝  ██╔══██║██║╚██╗██║
-███████╗██║  ██║██║ ╚████║
-╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝
-]])
-print("🔥 Kenon Hub for Blox Fruits 🔥")
+-- Function to check for supported executor
+local function IsSupportedExecutor()
+    local success, executor = pcall(function() return identifyexecutor() end)  -- Safely check for identifyexecutor
+    if success and executor then
+        return true
+    else
+        warn("Unsupported Executor! Script may not function properly.")
+        return false
+    end
+end
 
--- Services and Player Setup
-local player = game.Players.LocalPlayer
-local replicatedStorage = game:GetService("ReplicatedStorage")
-local workspaceEnemies = game.Workspace:WaitForChild("Enemies")
+-- Add a Logo Image at the top
+local logoImageUrl = "https://tse4.mm.bing.net/th?id=OIP.6BGEQgc9NlUYNo3cEUFcIQHaFj&pid=Api&P=0&h=220"  -- Replace this with your actual logo URL
+local logoImage = Instance.new("ImageLabel")
+logoImage.Image = logoImageUrl
+logoImage.Size = UDim2.new(0, 200, 0, 50)  -- Adjust the size of the logo (width, height)
+logoImage.Position = UDim2.new(0.5, -100, 0, 10)  -- Adjust position to center at the top
 
--- Global Toggles
-_G.AutoFarm = false
-_G.AutoBoss = false
-_G.AutoBone = false
-_G.FastAttack = false
+-- Add the logo to the script's UI
+logoImage.Parent = game.CoreGui:FindFirstChild("PlayerGui") or game.Players.LocalPlayer.PlayerGui
 
--- Functions
-local function findNearestEnemy()
-    local closestEnemy = nil
-    local shortestDistance = math.huge
+-- Loading Status
+local loadingStatusLabel = Instance.new("TextLabel")
+loadingStatusLabel.Size = UDim2.new(0, 200, 0, 50)
+loadingStatusLabel.Position = UDim2.new(0.5, -100, 0, 100)  -- Position under the logo
+loadingStatusLabel.Text = "Kenon Loading..."
+loadingStatusLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+loadingStatusLabel.BackgroundTransparency = 1  -- Make the background transparent
+loadingStatusLabel.Parent = logoImage.Parent
 
-    for _, enemy in pairs(workspaceEnemies:GetChildren()) do
-        if enemy:FindFirstChild("HumanoidRootPart") and enemy:FindFirstChild("Humanoid") and enemy.Humanoid.Health > 0 then
-            local distance = (enemy.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude
-            if distance < shortestDistance then
-                closestEnemy = enemy
-                shortestDistance = distance
+-- Wait for 10 seconds to simulate script loading
+wait(10)
+
+-- Remove the loading status after 10 seconds
+loadingStatusLabel.Text = "Script Loaded!"
+loadingStatusLabel.TextColor3 = Color3.fromRGB(0, 255, 0)  -- Change text color to green
+wait(2)  -- Show "Script Loaded!" for 2 seconds before moving to the next stage
+
+loadingStatusLabel.Visible = false  -- Hide the loading status label after loading is complete
+
+-- State variables
+local AutoFarmBoneEnabled = false
+local FastAttackEnabled = false
+local MoonPhase = "No Moon"  -- Moon phase status in the game
+local MoonPercentage = 0  -- Moon phase percentage
+
+-- Create the main menu
+local menuFrame = Instance.new("Frame")
+menuFrame.Size = UDim2.new(0, 400, 0, 500)
+menuFrame.Position = UDim2.new(0.5, -200, 0.5, -250)
+menuFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+menuFrame.Parent = logoImage.Parent
+
+-- Create Auto Farm Button
+local AutoFarmBoneButton = Instance.new("TextButton")
+AutoFarmBoneButton.Size = UDim2.new(0, 200, 0, 50)
+AutoFarmBoneButton.Position = UDim2.new(0.5, -100, 0, 20)  -- Position for the button
+AutoFarmBoneButton.Text = "Enable Auto Farm Bone"
+AutoFarmBoneButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+AutoFarmBoneButton.BackgroundColor3 = Color3.fromRGB(0, 128, 0)
+AutoFarmBoneButton.Parent = menuFrame
+
+-- Create Status Content Label
+local StatusContent = Instance.new("TextLabel")
+StatusContent.Size = UDim2.new(0, 300, 0, 50)
+StatusContent.Position = UDim2.new(0.5, -150, 0, 80)  -- Position for status label
+StatusContent.Text = "Moon Phase Status: " .. MoonPhase .. " (" .. MoonPercentage .. "%)"
+StatusContent.TextColor3 = Color3.fromRGB(255, 255, 255)
+StatusContent.BackgroundTransparency = 1  -- Make background transparent
+StatusContent.Parent = menuFrame
+
+-- Create Bone Count Label
+local BoneCountLabel = Instance.new("TextLabel")
+BoneCountLabel.Size = UDim2.new(0, 300, 0, 50)
+BoneCountLabel.Position = UDim2.new(0.5, -150, 0, 140)  -- Position for Bone Count label
+BoneCountLabel.Text = "Bone Count: 0"
+BoneCountLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+BoneCountLabel.BackgroundTransparency = 1  -- Make background transparent
+BoneCountLabel.Parent = menuFrame
+
+-- Enable fast melee attack function
+local function EnableMeleeAttack(target)
+    local player = game.Players.LocalPlayer
+    if player.Character and player.Character:FindFirstChild("Humanoid") then
+        local humanoid = player.Character.Humanoid
+        -- Ensure the player is targeting the right enemy (target is a mob)
+        if target and target:FindFirstChild("Humanoid") then
+            -- Melee attack logic: Move closer and initiate attack
+            player.Character.HumanoidRootPart.CFrame = target.HumanoidRootPart.CFrame
+            humanoid:MoveTo(target.HumanoidRootPart.Position)
+            humanoid:ChangeState(Enum.HumanoidStateType.Physics)
+            humanoid:MoveTo(target.HumanoidRootPart.Position)
+            -- Trigger attack animation or damage logic based on game mechanics
+            humanoid:ChangeState(Enum.HumanoidStateType.Attacking)  -- Assuming this triggers the melee animation
+        end
+    end
+end
+
+-- Auto farm Bone in Haunted Castle (Attack all enemies)
+local function AutoFarmBone()
+    local player = game.Players.LocalPlayer
+    local hauntedCastleIsland = game.Workspace:FindFirstChild("HauntedCastle") -- Find Haunted Castle in the workspace
+
+    -- Move to Haunted Castle island (if it's found)
+    if hauntedCastleIsland then
+        -- Ensure the character moves to the island
+        player.Character.HumanoidRootPart.CFrame = hauntedCastleIsland.HumanoidRootPart.CFrame
+        wait(1)  -- Wait to ensure the player arrives at the island
+
+        -- Loop to find and attack all enemies in the Haunted Castle
+        while AutoFarmBoneEnabled do
+            wait(0.1)
+            for _, mob in pairs(hauntedCastleIsland.Enemies:GetChildren()) do
+                if mob and mob:FindFirstChild("Humanoid") then
+                    -- Move to the enemy and attack with melee
+                    EnableMeleeAttack(mob)
+                    wait(0.5)  -- Wait before attacking the next enemy
+                end
             end
         end
-    end
-
-    return closestEnemy
-end
-
-local function attackEnemy(target)
-    if replicatedStorage:FindFirstChild("RemoteEvent") then
-        replicatedStorage.RemoteEvent:FireServer("Attack", target)
     else
-        warn("RemoteEvent not found!")
+        print("Haunted Castle island not found!")
     end
 end
 
-local function teleportToLocation(locationCFrame)
-    if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-        player.Character.HumanoidRootPart.CFrame = locationCFrame
+-- Calculate moon phase percentage
+local function UpdateMoonPhase()
+    local currentTime = game.Lighting.TimeOfDay -- Current time in the game
+    local hour = tonumber(currentTime:sub(1, 2))  -- Get the hour of the day
+
+    -- Calculate moon phase percentage based on time of day (assume 24-hour cycle)
+    local moonCycleTime = 24  -- Moon cycle in 24 hours
+    local cyclePosition = hour / moonCycleTime  -- Calculate position of the moon in the cycle
+
+    -- Update moon phase percentage
+    MoonPercentage = math.floor(cyclePosition * 100)  -- Calculate percentage
+
+    -- Determine moon phase status based on the cycle
+    if cyclePosition >= 0.75 or cyclePosition < 0.25 then
+        MoonPhase = "Full Moon"
+    elseif cyclePosition >= 0.25 and cyclePosition < 0.5 then
+        MoonPhase = "Waning Moon"
+    elseif cyclePosition >= 0.5 and cyclePosition < 0.75 then
+        MoonPhase = "Waxing Moon"
+    else
+        MoonPhase = "No Moon"
     end
 end
 
--- Auto Farm Logic
-local function autoFarm()
-    spawn(function()
-        while _G.AutoFarm do
-            pcall(function()
-                -- Farm Logic (Replace with your farming logic)
-                local enemy = findNearestEnemy()
-                if enemy then
-                    teleportToLocation(enemy.HumanoidRootPart.CFrame)
-                    attackEnemy(enemy)
-                end
-            end)
-            wait(0.1)
-        end
-    end)
-end
+-- Update moon phase status in real-time
+game:GetService("RunService").Heartbeat:Connect(function()
+    UpdateMoonPhase()
+    StatusContent.Text = "Moon Phase Status: " .. MoonPhase .. " (" .. MoonPercentage .. "%)"
+end)
 
--- Auto Boss Logic
-local function autoFarmBoss()
-    spawn(function()
-        while _G.AutoBoss do
-            pcall(function()
-                local bossPosition = CFrame.new(1000, 200, 1000) -- Replace with boss position
-                teleportToLocation(bossPosition)
-
-                local enemy = findNearestEnemy()
-                if enemy and enemy.Name == "BossNameHere" then
-                    attackEnemy(enemy)
-                end
-            end)
-            wait(0.1)
-        end
-    end)
-end
-
--- Fast Attack Logic
-local function fastAttack()
-    spawn(function()
-        while _G.FastAttack do
-            pcall(function()
-                replicatedStorage.Remotes.CommF_:FireServer("FastAttack")
-            end)
-            wait(0.01) -- Adjust for speed
-        end
-    end)
-end
-
--- Auto Bone Logic
-local function autoFarmBone()
-    spawn(function()
-        while _G.AutoBone do
-            pcall(function()
-                local bonePosition = CFrame.new(-9515.75, 174.85, 6079.4) -- Replace with Bone Farming location
-                teleportToLocation(bonePosition)
-
-                for _, enemy in pairs(workspaceEnemies:GetChildren()) do
-                    if enemy.Name == "Demonic Soul" or enemy.Name == "Living Zombie" then
-                        attackEnemy(enemy)
-                    end
-                end
-            end)
-            wait(0.1)
-        end
-    end)
-end
-
--- Tabs and Features
-local farmingTab = Window:AddTab("Auto Farming")
-local utilityTab = Window:AddTab("Utilities")
-
--- Farming Features
-farmingTab:AddToggle("Auto Farm", {
-    Title = "Enable Auto Farm",
-    Default = false,
-    Callback = function(value)
-        _G.AutoFarm = value
-        if value then
-            autoFarm()
-            print("Auto Farm: ON")
-        else
-            print("Auto Farm: OFF")
+-- Update bone count in player's inventory
+local function UpdateBoneCount()
+    local player = game.Players.LocalPlayer
+    local boneCount = 0
+    
+    -- Check player's inventory for bone items
+    local backpack = player.Backpack
+    for _, item in pairs(backpack:GetChildren()) do
+        if item.Name == "Bone" then  -- Assume the bone item is named "Bone"
+            boneCount = boneCount + (item:FindFirstChild("Amount") and item.Amount or 1)  -- Update bone count, assuming there's an Amount property
         end
     end
-})
 
-farmingTab:AddToggle("Auto Farm Boss", {
-    Title = "Enable Auto Boss",
-    Default = false,
-    Callback = function(value)
-        _G.AutoBoss = value
-        if value then
-            autoFarmBoss()
-            print("Auto Boss: ON")
-        else
-            print("Auto Boss: OFF")
-        end
-    end
-})
+    -- Update Bone Count label
+    BoneCountLabel.Text = "Bone Count: " .. boneCount
+end
 
-farmingTab:AddToggle("Auto Farm Bone", {
-    Title = "Enable Auto Bone",
-    Default = false,
-    Callback = function(value)
-        _G.AutoBone = value
-        if value then
-            autoFarmBone()
-            print("Auto Bone: ON")
-        else
-            print("Auto Bone: OFF")
-        end
-    end
-})
-
--- Utility Features
-utilityTab:AddToggle("Fast Attack", {
-    Title = "Enable Fast Attack",
-    Default = false,
-    Callback = function(value)
-        _G.FastAttack = value
-        if value then
-            fastAttack()
-            print("Fast Attack: ON")
-        else
-            print("Fast Attack: OFF")
-        end
-    end
-})
-
--- Final Touches
-Window:Show()
-
-print("Kenon Hub initialized! Use the UI menu to control features.")
+-- Button to toggle Auto Farm
