@@ -1,21 +1,21 @@
 -- Kenon Hub - Auto Farm Bone & Moon Phase Tracker
 -- Script created by khoitongdz for Blox Fruits
 
--- Kiểm tra Executor hỗ trợ
+-- Check supported Executor
 local function IsSupportedExecutor()
     local success, executor = pcall(function() return identifyexecutor() end)
     if not (success and executor) then
-        warn("Executor không được hỗ trợ! Script có thể không hoạt động chính xác.")
+        warn("Unsupported executor! The script may not work properly.")
     end
 end
 IsSupportedExecutor()
 
--- Các biến chính
+-- Main variables
 local AutoFarmBoneEnabled = false
 local MoonPhase = "No Moon"
 local MoonPercentage = 0
 
--- GUI Setup bằng Fluent
+-- GUI Setup using Fluent
 local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/ui/refs/heads/main/.gitignore"))()
 local Window = Fluent:CreateWindow({
     Title = "Kenon Hub",
@@ -33,7 +33,7 @@ local FarmButton = MainTab:AddToggle("Auto Farm Bone", false, function(state)
 end)
 local MoonLabel = MainTab:AddLabel("Moon Phase: " .. MoonPhase .. " (" .. MoonPercentage .. "%)")
 
--- Hàm cập nhật trạng thái Moon Phase
+-- Function to update Moon Phase status
 local function UpdateMoonPhase()
     local hour = tonumber(game.Lighting.TimeOfDay:sub(1, 2))
     local cyclePosition = (hour % 24) / 24
@@ -50,7 +50,7 @@ local function UpdateMoonPhase()
     MoonLabel:SetText("Moon Phase: " .. MoonPhase .. " (" .. MoonPercentage .. "%)")
 end
 
--- Hàm Auto Farm Bone
+-- Function for Auto Farm Bone
 local function AutoFarmBone()
     local player = game.Players.LocalPlayer
     local character = player.Character or player.CharacterAdded:Wait()
@@ -69,18 +69,18 @@ local function AutoFarmBone()
                 end
             end
         else
-            warn("Không tìm thấy Haunted Castle!")
+            warn("Haunted Castle not found!")
         end
         wait(1)
     end
 end
 
--- Kết nối toggle Auto Farm
+-- Connect the Auto Farm toggle
 FarmButton.OnChanged:Connect(function()
     if AutoFarmBoneEnabled then
         spawn(AutoFarmBone)
     end
 end)
 
--- Cập nhật Moon Phase theo thời gian thực
+-- Update Moon Phase in real-time
 game:GetService("RunService").Heartbeat:Connect(UpdateMoonPhase)
