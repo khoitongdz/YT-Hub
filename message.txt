@@ -1,152 +1,43 @@
-local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/ui/refs/heads/main/.gitignore"))()local Window = Fluent:CreateWindow({
-    Title = "Khoitong dz",
-    SubTitle = "Premium",
+-- Kenon Hub - Auto Farm Bone & Moon Phase Tracker
+-- Script created by khoitongdz for Blox Fruits
+
+-- Kiểm tra Executor hỗ trợ
+local function IsSupportedExecutor()
+    local success, executor = pcall(function() return identifyexecutor() end)
+    if not (success and executor) then
+        warn("Executor không được hỗ trợ! Script có thể không hoạt động chính xác.")
+    end
+end
+IsSupportedExecutor()
+
+-- Các biến chính
+local AutoFarmBoneEnabled = false
+local MoonPhase = "No Moon"
+local MoonPercentage = 0
+
+-- GUI Setup bằng Fluent
+local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/ui/refs/heads/main/.gitignore"))()
+local Window = Fluent:CreateWindow({
+    Title = "Kenon Hub",
+    SubTitle = "Blox Fruits",
     TabWidth = 110,
     Size = UDim2.fromOffset(480, 320),
     Acrylic = false,
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.End
--- Kenon Hub with Auto Farm Bone and Moon Phase Status (Calculating Moon Phase Percentage)
--- Script created by khoitongdz
+})
 
--- Function to check for supported executor
-local function IsSupportedExecutor()
-    local success, executor = pcall(function() return identifyexecutor() end)  -- Safely check for identifyexecutor
-    if success and executor then
-        return true
-    else
-        warn("Unsupported Executor! Script may not function properly.")
-        return false
-    end
-end
+local MainTab = Window:AddTab("Main")
+local FarmButton = MainTab:AddToggle("Auto Farm Bone", false, function(state)
+    AutoFarmBoneEnabled = state
+end)
+local MoonLabel = MainTab:AddLabel("Moon Phase: " .. MoonPhase .. " (" .. MoonPercentage .. "%)")
 
--- Add a Logo Image at the top
-local logoImageUrl = "https://tse4.mm.bing.net/th?id=OIP.6BGEQgc9NlUYNo3cEUFcIQHaFj&pid=Api&P=0&h=220"  -- Replace this with your actual logo URL
-local logoImage = Instance.new("ImageLabel")
-logoImage.Image = logoImageUrl
-logoImage.Size = UDim2.new(0, 200, 0, 50)  -- Adjust the size of the logo (width, height)
-logoImage.Position = UDim2.new(0.5, -100, 0, 10)  -- Adjust position to center at the top
-
--- Add the logo to the script's UI
-logoImage.Parent = game.CoreGui:FindFirstChild("PlayerGui") or game.Players.LocalPlayer.PlayerGui
-
--- Loading Status
-local loadingStatusLabel = Instance.new("TextLabel")
-loadingStatusLabel.Size = UDim2.new(0, 200, 0, 50)
-loadingStatusLabel.Position = UDim2.new(0.5, -100, 0, 100)  -- Position under the logo
-loadingStatusLabel.Text = "Kenon Loading..."
-loadingStatusLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-loadingStatusLabel.BackgroundTransparency = 1  -- Make the background transparent
-loadingStatusLabel.Parent = logoImage.Parent
-
--- Wait for 10 seconds to simulate script loading
-wait(10)
-
--- Remove the loading status after 10 seconds
-loadingStatusLabel.Text = "Script Loaded!"
-loadingStatusLabel.TextColor3 = Color3.fromRGB(0, 255, 0)  -- Change text color to green
-wait(2)  -- Show "Script Loaded!" for 2 seconds before moving to the next stage
-
-loadingStatusLabel.Visible = false  -- Hide the loading status label after loading is complete
-
--- State variables
-local AutoFarmBoneEnabled = false
-local FastAttackEnabled = false
-local MoonPhase = "No Moon"  -- Moon phase status in the game
-local MoonPercentage = 0  -- Moon phase percentage
-
--- Create the main menu
-local menuFrame = Instance.new("Frame")
-menuFrame.Size = UDim2.new(0, 400, 0, 500)
-menuFrame.Position = UDim2.new(0.5, -200, 0.5, -250)
-menuFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-menuFrame.Parent = logoImage.Parent
-
--- Create Auto Farm Button
-local AutoFarmBoneButton = Instance.new("TextButton")
-AutoFarmBoneButton.Size = UDim2.new(0, 200, 0, 50)
-AutoFarmBoneButton.Position = UDim2.new(0.5, -100, 0, 20)  -- Position for the button
-AutoFarmBoneButton.Text = "Enable Auto Farm Bone"
-AutoFarmBoneButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-AutoFarmBoneButton.BackgroundColor3 = Color3.fromRGB(0, 128, 0)
-AutoFarmBoneButton.Parent = menuFrame
-
--- Create Status Content Label
-local StatusContent = Instance.new("TextLabel")
-StatusContent.Size = UDim2.new(0, 300, 0, 50)
-StatusContent.Position = UDim2.new(0.5, -150, 0, 80)  -- Position for status label
-StatusContent.Text = "Moon Phase Status: " .. MoonPhase .. " (" .. MoonPercentage .. "%)"
-StatusContent.TextColor3 = Color3.fromRGB(255, 255, 255)
-StatusContent.BackgroundTransparency = 1  -- Make background transparent
-StatusContent.Parent = menuFrame
-
--- Create Bone Count Label
-local BoneCountLabel = Instance.new("TextLabel")
-BoneCountLabel.Size = UDim2.new(0, 300, 0, 50)
-BoneCountLabel.Position = UDim2.new(0.5, -150, 0, 140)  -- Position for Bone Count label
-BoneCountLabel.Text = "Bone Count: 0"
-BoneCountLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-BoneCountLabel.BackgroundTransparency = 1  -- Make background transparent
-BoneCountLabel.Parent = menuFrame
-
--- Enable fast melee attack function
-local function EnableMeleeAttack(target)
-    local player = game.Players.LocalPlayer
-    if player.Character and player.Character:FindFirstChild("Humanoid") then
-        local humanoid = player.Character.Humanoid
-        -- Ensure the player is targeting the right enemy (target is a mob)
-        if target and target:FindFirstChild("Humanoid") then
-            -- Melee attack logic: Move closer and initiate attack
-            player.Character.HumanoidRootPart.CFrame = target.HumanoidRootPart.CFrame
-            humanoid:MoveTo(target.HumanoidRootPart.Position)
-            humanoid:ChangeState(Enum.HumanoidStateType.Physics)
-            humanoid:MoveTo(target.HumanoidRootPart.Position)
-            -- Trigger attack animation or damage logic based on game mechanics
-            humanoid:ChangeState(Enum.HumanoidStateType.Attacking)  -- Assuming this triggers the melee animation
-        end
-    end
-end
-
--- Auto farm Bone in Haunted Castle (Attack all enemies)
-local function AutoFarmBone()
-    local player = game.Players.LocalPlayer
-    local hauntedCastleIsland = game.Workspace:FindFirstChild("HauntedCastle") -- Find Haunted Castle in the workspace
-
-    -- Move to Haunted Castle island (if it's found)
-    if hauntedCastleIsland then
-        -- Ensure the character moves to the island
-        player.Character.HumanoidRootPart.CFrame = hauntedCastleIsland.HumanoidRootPart.CFrame
-        wait(1)  -- Wait to ensure the player arrives at the island
-
-        -- Loop to find and attack all enemies in the Haunted Castle
-        while AutoFarmBoneEnabled do
-            wait(0.1)
-            for _, mob in pairs(hauntedCastleIsland.Enemies:GetChildren()) do
-                if mob and mob:FindFirstChild("Humanoid") then
-                    -- Move to the enemy and attack with melee
-                    EnableMeleeAttack(mob)
-                    wait(0.5)  -- Wait before attacking the next enemy
-                end
-            end
-        end
-    else
-        print("Haunted Castle island not found!")
-    end
-end
-
--- Calculate moon phase percentage
+-- Hàm cập nhật trạng thái Moon Phase
 local function UpdateMoonPhase()
-    local currentTime = game.Lighting.TimeOfDay -- Current time in the game
-    local hour = tonumber(currentTime:sub(1, 2))  -- Get the hour of the day
-
-    -- Calculate moon phase percentage based on time of day (assume 24-hour cycle)
-    local moonCycleTime = 24  -- Moon cycle in 24 hours
-    local cyclePosition = hour / moonCycleTime  -- Calculate position of the moon in the cycle
-
-    -- Update moon phase percentage
-    MoonPercentage = math.floor(cyclePosition * 100)  -- Calculate percentage
-
-    -- Determine moon phase status based on the cycle
+    local hour = tonumber(game.Lighting.TimeOfDay:sub(1, 2))
+    local cyclePosition = (hour % 24) / 24
+    MoonPercentage = math.floor(cyclePosition * 100)
     if cyclePosition >= 0.75 or cyclePosition < 0.25 then
         MoonPhase = "Full Moon"
     elseif cyclePosition >= 0.25 and cyclePosition < 0.5 then
@@ -156,29 +47,40 @@ local function UpdateMoonPhase()
     else
         MoonPhase = "No Moon"
     end
+    MoonLabel:SetText("Moon Phase: " .. MoonPhase .. " (" .. MoonPercentage .. "%)")
 end
 
--- Update moon phase status in real-time
-game:GetService("RunService").Heartbeat:Connect(function()
-    UpdateMoonPhase()
-    StatusContent.Text = "Moon Phase Status: " .. MoonPhase .. " (" .. MoonPercentage .. "%)"
+-- Hàm Auto Farm Bone
+local function AutoFarmBone()
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    while AutoFarmBoneEnabled do
+        local hauntedCastle = game.Workspace:FindFirstChild("Haunted Castle")
+        if hauntedCastle then
+            character.HumanoidRootPart.CFrame = hauntedCastle.CFrame
+            wait(2)
+
+            for _, mob in ipairs(hauntedCastle:GetChildren()) do
+                if mob:FindFirstChild("Humanoid") and mob.Humanoid.Health > 0 then
+                    character.HumanoidRootPart.CFrame = mob.HumanoidRootPart.CFrame
+                    wait(0.3)
+                    mob.Humanoid:TakeDamage(50)
+                end
+            end
+        else
+            warn("Không tìm thấy Haunted Castle!")
+        end
+        wait(1)
+    end
+end
+
+-- Kết nối toggle Auto Farm
+FarmButton.OnChanged:Connect(function()
+    if AutoFarmBoneEnabled then
+        spawn(AutoFarmBone)
+    end
 end)
 
--- Update bone count in player's inventory
-local function UpdateBoneCount()
-    local player = game.Players.LocalPlayer
-    local boneCount = 0
-    
-    -- Check player's inventory for bone items
-    local backpack = player.Backpack
-    for _, item in pairs(backpack:GetChildren()) do
-        if item.Name == "Bone" then  -- Assume the bone item is named "Bone"
-            boneCount = boneCount + (item:FindFirstChild("Amount") and item.Amount or 1)  -- Update bone count, assuming there's an Amount property
-        end
-    end
-
-    -- Update Bone Count label
-    BoneCountLabel.Text = "Bone Count: " .. boneCount
-end
-
--- Button to toggle Auto Farm
+-- Cập nhật Moon Phase theo thời gian thực
+game:GetService("RunService").Heartbeat:Connect(UpdateMoonPhase)
