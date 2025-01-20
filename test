@@ -1,5 +1,5 @@
 Mã Cặc
-1: tm5rye07e
+1: tm5rye07e use
 2: 7kiv1lv97
 3: zs062itau
 4: tmyhhqrq7
@@ -9,9 +9,24 @@ Mã Cặc
 8: pzd2ejpn1
 9: xv7cbdp7m
 10: 69mkdhqn3
-https://cdn.discordapp.com/attachments/1269853435323351050/1323604921278267422/swift-bootstrapper.exe?ex=677c5ee4&is=677b0d64&hm=dea068f1a36f4d532045a8520c60dea3640479f117ef6e42da648105024c5289&
 getswift.xyz
+https://cdn.discordapp.com/attachments/1269853435323351050/1323604921278267422/swift-bootstrapper.exe?ex=678ed3e4&is=678d8264&hm=208d98b629963945315f4d8e39a36890a06a879dbac9a4ac511ac3414c8cda73&
 gengetv()key=No_Key
 https://getargon.xyz/
+
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer 
+getgenv().Key = "vdoTxBcITAJBpDdlawRcjlHZNRVoyAeE" 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaHub.lua"))()
+
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AnDepZaiHub/AnDepZaiHubBeta/refs/heads/main/AnDepZaiHubNewUpdated.lua"))()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
+
+getgenv().Team = "Marines"
+getgenv().Hide_Menu = false
+getgenv().Auto_Execute = false
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/main.lua"))()
+
 end
   end)
