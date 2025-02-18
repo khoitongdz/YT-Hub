@@ -55,3 +55,9 @@ sửu cằnnnnn!
 end
   end)
 code by.?
+https://www.emailnator.com/
+end
+end)
+---[[lực óc chó]]---
+end
+    end)
