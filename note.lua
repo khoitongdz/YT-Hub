@@ -24,7 +24,7 @@ getswift.xyz
 gengetv()key=No_Key
 https://getargon.xyz/
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Pls-Donate.lua/refs/heads/main/khoitongdz.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Pls-Donate.lua/refs/heads/main/stus.lua"))()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
 
