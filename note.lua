@@ -40,10 +40,8 @@ https://www.mediafire.com/file/am5ttcksutpijvc/Trigon_2.658_fix.apk/file
 https://getsolara.dev/
 
 https://codex.lol/
-
-bloxtraps 
-https://gofile.io/d/Nqp4fg
-
+blox trap
+https://gofile.io/d/JK0EfM
 solara
 https://gofile.io/d/0eqv6a
 end
