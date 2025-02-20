@@ -1,6 +1,6 @@
 Reisurrk only(nick chính)
-28fqjf1lh
-l182icbt1
+28fqjf1lh .
+l182icbt1 .
 095i9s9fi
 s4vvf8geb
 zq3gk9ya0
@@ -10,9 +10,9 @@ y0n9tdrt0
 mck69rd7p
 p78lh63r0
 reisurk only(nick phụ)
-yd03oqn3p
-havgvppe2
-0ya85osrk
+yd03oqn3p .
+havgvppe2 .
+0ya85osrk .
 fs69x23ml
 hu2aumztl
 bz7nhefc2
@@ -23,8 +23,8 @@ t3ifevblh
 getswift.xyz
 gengetv()key=No_Key
 https://getargon.xyz/
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Pls-Donate.lua/refs/heads/main/stus.lua"))()
+---[[[auto chat and framing lv]]]---
+loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Pls-Donate.lua/refs/heads/main/stus.lua"))() 
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
 
@@ -38,7 +38,7 @@ https://www.mediafire.com/file/2glq0m64kbcjd4z/Login_Roblox_VNG_V2.654.apk/file?
 https://www.mediafire.com/file/am5ttcksutpijvc/Trigon_2.658_fix.apk/file
 
 https://getsolara.dev/
-shz.al/kenonhub
+https://shz.al/~kenonhub
 https://codex.lol/
 velocity
 https://gofile.io/d/Jv0AKq
