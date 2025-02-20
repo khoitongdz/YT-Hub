@@ -1,7 +1,7 @@
 Reisurrk only(nick chính)
 28fqjf1lh .
 l182icbt1 .
-095i9s9fi
+095i9s9fi . 
 s4vvf8geb
 zq3gk9ya0
 3gwx3cf9u
@@ -13,15 +13,14 @@ reisurk only(nick phụ)
 yd03oqn3p .
 havgvppe2 .
 0ya85osrk .
-fs69x23ml
+fs69x23ml .
 hu2aumztl
 bz7nhefc2
 s22wg8o4g
 6yv1qacrc
 t3ifevblh
 4k8015ggq
-getswift.xyz
-gengetv()key=No_Key
+Argon
 https://getargon.xyz/
 ---[[[auto chat and framing lv]]]---
 loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Pls-Donate.lua/refs/heads/main/stus.lua"))() 
@@ -40,6 +39,8 @@ https://www.mediafire.com/file/am5ttcksutpijvc/Trigon_2.658_fix.apk/file
 https://getsolara.dev/
 https://shz.al/~kenonhub
 https://codex.lol/
+roblox
+https://filerift.com/file/tc0xAop4On
 velocity
 https://gofile.io/d/Jv0AKq
 blox trap
