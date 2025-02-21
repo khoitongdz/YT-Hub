@@ -1,3 +1,5 @@
+---[[discord:https://discord.gg/w26VGWmMPb]]---
+---kiệt lặc---
 Reisurrk only(nick chính)
 28fqjf1lh .
 l182icbt1 .
@@ -27,6 +29,8 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Pls-Donate
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
 
+---[[Beta Script]]---
+loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/sumonleviathanbeta.lua/refs/heads/main/.lua"))()
 getgenv().Team = "Marines"
 getgenv().Hide_Menu = false
 getgenv().Auto_Execute = false
