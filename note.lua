@@ -1,5 +1,6 @@
 ---[[discord:https://discord.gg/w26VGWmMPb]]---
 ---kiệt lặc---
+https://www.youtube.com/watch?v=Pi_8C1UqeDc
 Reisurrk only(nick chính)
 28fqjf1lh .
 l182icbt1 .
