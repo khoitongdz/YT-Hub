@@ -2,16 +2,17 @@
 ---kiệt lặc---
 https://www.youtube.com/watch?v=Pi_8C1UqeDc
 Reisurrk only(nick chính)
-28fqjf1lh .
-l182icbt1 .
-095i9s9fi . 
-s4vvf8geb .
-zq3gk9ya0 .
-3gwx3cf9u .
-z73sy0y5u
-y0n9tdrt0
-mck69rd7p
-p78lh63r0
+xc4ujpzyp
+g4iq4ktyl
+yq94p24lk
+e5o5k35py
+4db4czuan
+nehy6kuv8
+t9efyf247
+vmjtnt58w
+gaq1p8au2
+oe0zg79uh
+end)
 reisurk only(nick phụ)
 yd03oqn3p .
 havgvppe2 .
