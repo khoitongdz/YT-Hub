@@ -5,9 +5,9 @@ Reisurrk only(nick chính)
 28fqjf1lh .
 l182icbt1 .
 095i9s9fi . 
-s4vvf8geb
-zq3gk9ya0
-3gwx3cf9u
+s4vvf8geb .
+zq3gk9ya0 .
+3gwx3cf9u .
 z73sy0y5u
 y0n9tdrt0
 mck69rd7p
@@ -17,7 +17,7 @@ yd03oqn3p .
 havgvppe2 .
 0ya85osrk .
 fs69x23ml .
-hu2aumztl
+hu2aumztl .
 bz7nhefc2
 s22wg8o4g
 6yv1qacrc
@@ -40,36 +40,26 @@ getgenv().Team = "Marines"
 getgenv().Hide_Menu = false
 getgenv().Auto_Execute = false
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/main.lua"))()
-
-https://www.mediafire.com/file/2glq0m64kbcjd4z/Login_Roblox_VNG_V2.654.apk/file?dkey=lh3nxb31r6v&r=698
-
-https://www.mediafire.com/file/am5ttcksutpijvc/Trigon_2.658_fix.apk/file
-
-https://getsolara.dev/
 https://shz.al/~kenonhub
-https://codex.lol/
+end 
+FILEHack
+bloxtrap 2.8.6
+https://bloxstrap.org/
 
 velocity
 https://gofile.io/d/QXR9XY
 file fix 
 https://cdn.discordapp.com/attachments/1328430378993848381/1342459046615318599/FIXES.7z?ex=67ba5eaa&is=67b90d2a&hm=e0ca3d0906e82064e7e102bc83c81d3a021d0a6583ddaa85ba3238e51538ab97&
-bloxtrap 2.8.6
-https://bloxstrap.org/
-
-blox trap 4.2.1
-https://gofile.io/d/JK0EfM
-
+end
 solara
 https://gofile.io/d/0eqv6a
 end
   end)
-https://getcryptic.net/
 gengetv.()=lực bị nguuuu
 sửu cằnnnnn!
 end
   end)
 code by.?
-https://www.emailnator.com/
 end
 end)
 ---[[lực óc chó]]---
