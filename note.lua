@@ -31,7 +31,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Pls-Donate
 Andepzai back
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/AnDepZaiHub/AnDepZaiHubBeta/refs/heads/main/AnDepZaiHubNewUpdated.lua"))()
-
+red hub
 loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
 
 ---[[Beta Script]]---
@@ -48,10 +48,13 @@ https://www.mediafire.com/file/am5ttcksutpijvc/Trigon_2.658_fix.apk/file
 https://getsolara.dev/
 https://shz.al/~kenonhub
 https://codex.lol/
+
 velocity
-https://gofile.io/d/sV0YCT
+https://gofile.io/d/QXR9XY
+
 blox trap
 https://gofile.io/d/JK0EfM
+
 solara
 https://gofile.io/d/0eqv6a
 end
