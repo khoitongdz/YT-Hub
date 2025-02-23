@@ -36,7 +36,8 @@ red hub
 loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
 
 ---[[Beta Script]]---
-loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/sumonleviathanbeta.lua/refs/heads/main/.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/kenon.lua"))()
+
 getgenv().Team = "Marines"
 getgenv().Hide_Menu = false
 getgenv().Auto_Execute = false
@@ -60,7 +61,7 @@ end
   end)
 code by.?
 end
-end)
+  end)
 ---[[lực óc chó]]---
 end
     end)
