@@ -1,13 +1,19 @@
 ---[[discord:https://discord.gg/w26VGWmMPb]]---
 ---kiệt lặc---
-https://www.youtube.com/watch?v=Pi_8C1UqeDc
+video show case script!!!
+https://gofile.io/d/U0DkHh
 Reisurrk only(nick chính)
-nehy6kuv8
-t9efyf247
-vmjtnt58w
-gaq1p8au2
-oe0zg79uh
-end)
+c94ya9qb6
+53l0jf729
+2m6qhkk4f
+o4p0nf7uz
+klxei5tu9
+efy282g0l
+h9x7uvrv5
+5ul5z12ek
+dbxa7rh1d
+nslm1glj8
+end
 reisurk only(nick phụ)
 yd03oqn3p .
 havgvppe2 .
