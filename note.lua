@@ -2,9 +2,9 @@
 ---kiệt lặc---
 https://www.youtube.com/watch?v=Pi_8C1UqeDc
 Reisurrk only(nick chính)
-xc4ujpzyp
-g4iq4ktyl
-yq94p24lk
+xc4ujpzyp .
+g4iq4ktyl .
+yq94p24lk .
 e5o5k35py
 4db4czuan
 nehy6kuv8
@@ -49,8 +49,8 @@ bloxtrap 2.8.6
 https://bloxstrap.org/
 -------------------------------------------------------------------------------------------------------------------------------
 velocity
-https://gofile.io/d/QXR9XY
-
+https://gofile.io/d/icFjQj
+-------------------------------------------------------------------------------------------------------------------------------------------
 how to tắt cái căn cột này https://media.discordapp.net/attachments/1315548995493433375/1343233792311038084/image.png?ex=67bc8774&is=67bb35f4&hm=5796fbb745357145c042bb77e93f078956dd05a049c0df340feb3b5a5d1af138&=&format=webp&quality=lossless&width=394&height=303
 ấn nút: INS ---trên bàn phím
 end
@@ -61,6 +61,10 @@ https://gofile.io/d/0eqv6a
 https://gofile.io/d/aIMkHc
 --------------------------------------------Bypass key---------------------------------------------------
 https://bypass.vip/
+---------------------------------------------------------------New hack-------------------------------------------------------------
+video hướng dẫn ngặm cỏ : https://www.youtube.com/watch?v=3uza_l3GLS4
+https://gofile.io/d/1g6lTL
+tải roblox thường
 end
   end)
 gengetv.()=lực bị nguuuu
