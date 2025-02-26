@@ -2,11 +2,6 @@
 ---kiệt lặc---
 https://www.youtube.com/watch?v=Pi_8C1UqeDc
 Reisurrk only(nick chính)
-xc4ujpzyp .
-g4iq4ktyl .
-yq94p24lk .
-e5o5k35py
-4db4czuan
 nehy6kuv8
 t9efyf247
 vmjtnt58w
@@ -26,23 +21,23 @@ t3ifevblh
 4k8015ggq
 Argon
 https://getargon.xyz/
----[[[auto chat and framing lv]]]---
+----------------------------Script-------------------------------
+combo up draco v4
+loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/kenon.lua"))()
+--------------------------------------------------------------------------------------------------------------------------------
 loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Pls-Donate.lua/refs/heads/main/stus.lua"))() 
-
+--------------------------------------------------------------------------------------------------------------------------------
 Andepzai back
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/AnDepZaiHub/AnDepZaiHubBeta/refs/heads/main/AnDepZaiHubNewUpdated.lua"))()
+--------------------------------------------------------------------------------------------------------------------------------
 red hub
 loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
-
----[[Beta Script]]---
-loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/kenon.lua"))()
-
+--------------------------------------------------------------------------------------------------------------------------------
 getgenv().Team = "Marines"
 getgenv().Hide_Menu = false
 getgenv().Auto_Execute = false
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/main.lua"))()
-https://shz.al/~kenonhub
 end 
 -------------------------------------------------FILEHack---------------------------------------------------------------
 bloxtrap 2.8.6
