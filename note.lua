@@ -3,16 +3,16 @@
 video show case script!!!
 https://gofile.io/d/U0DkHh
 Reisurrk only(nick chính)
-c94ya9qb6
-53l0jf729
-2m6qhkk4f
-o4p0nf7uz
-klxei5tu9
-efy282g0l
-h9x7uvrv5
-5ul5z12ek
-dbxa7rh1d
-nslm1glj8
+jsov307dy            ---[[Update!!]]---
+ilo10sq1e
+3so1tazhg
+2h5fu3r9z
+riq0avq75
+h4n8zl0zh
+p9ko2fgdj
+1z5autg52
+n50idirmx
+xxhyjdnoq
 end
 reisurk only(nick phụ)
 yd03oqn3p .
