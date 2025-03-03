@@ -2,8 +2,7 @@
 ---kiệt lặc---
 video show case script!!!
 https://gofile.io/d/U0DkHh
-Reisurrk only(nick chính)
-jsov307dy            ---[[Update!!]]---
+Reisurrk only(nick chính)       ---[[Update!!]]---
 ilo10sq1e
 3so1tazhg
 2h5fu3r9z
@@ -28,6 +27,9 @@ t3ifevblh
 Argon
 https://getargon.xyz/
 ----------------------------Script-------------------------------
+Hop Boss dought king,rip_indra,râu đen free
+loadstring(game:HttpGet("https://shz.al/~987"))()
+-------------------------------------------------------------------------------------------------------------------------------------
 combo up draco v4
 loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/kenon.lua"))()
 --------------------------------------------------------------------------------------------------------------------------------
