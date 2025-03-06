@@ -1,11 +1,8 @@
-loadstring(game:HttpGet("https://shz.al/~sidi"))()
 ---[[discord:https://discord.gg/w26VGWmMPb]]---
 ---kiệt lặc---
 video show case script!!!
 https://gofile.io/d/U0DkHh
 Reisurrk only(nick chính)       ---[[Update!!]]---
-ilo10sq1e
-3so1tazhg
 2h5fu3r9z
 riq0avq75
 h4n8zl0zh
@@ -20,16 +17,22 @@ havgvppe2 .
 0ya85osrk .
 fs69x23ml .
 hu2aumztl .
-bz7nhefc2
-s22wg8o4g
-6yv1qacrc
 t3ifevblh
 4k8015ggq
 Argon
 https://getargon.xyz/
 ----------------------------Script-------------------------------
 Hop Boss dought king,rip_indra,râu đen free
-loadstring(game:HttpGet("https://shz.al/~987"))()
+local urls = {
+    "https://raw.githubusercontent.com/LuaCrack/Min/refs/heads/main/MinHopBoss",
+    "https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua",
+}
+
+for _, url in ipairs(urls) do
+    spawn(function()
+        loadstring(game:HttpGet(url))()
+    end)
+end
 -------------------------------------------------------------------------------------------------------------------------------------
 combo up draco v4
 loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/kenon.lua"))()
@@ -60,7 +63,7 @@ how to tắt cái căn cột này https://media.discordapp.net/attachments/13155
 end
 ----------------------------------------------------------------------------------------------------------------------------
 solara
-https://gofile.io/d/0eqv6a
+cút
 --------------------------------------------Bypass key---------------------------------------------------
 https://bypass.vip/
 ---------------------------------------------------------------New hack-------------------------------------------------------------
