@@ -3,8 +3,6 @@
 video show case script!!!
 https://gofile.io/d/U0DkHh
 Reisurrk only(nick chính)       ---[[Update!!]]---
-2h5fu3r9z
-riq0avq75
 h4n8zl0zh
 p9ko2fgdj
 1z5autg52
@@ -41,10 +39,6 @@ combo up draco v4
 loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/kenon.lua"))()
 --------------------------------------------------------------------------------------------------------------------------------
 loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Pls-Donate.lua/refs/heads/main/stus.lua"))() 
---------------------------------------------------------------------------------------------------------------------------------
-Andepzai back
-repeat wait() until game:IsLoaded() and game.Players.LocalPlayer 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/AnDepZaiHub/AnDepZaiHubBeta/refs/heads/main/AnDepZaiHubNewUpdated.lua"))()
 --------------------------------------------------------------------------------------------------------------------------------
 red hub
 loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
