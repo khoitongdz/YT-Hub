@@ -33,6 +33,9 @@ for _, url in ipairs(urls) do
         loadstring(game:HttpGet(url))()
     end)
 end
+
+-------------------------------------Fix Lag Script+Fps-----------------------------------
+loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/fixlag.lua"))()
 -------------------------------------------------------------------------------------------------------------------------------------
 combo up draco v4
 loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/kenon.lua"))()
