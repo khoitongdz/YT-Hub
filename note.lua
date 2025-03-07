@@ -60,6 +60,8 @@ how to tắt cái căn cột này https://media.discordapp.net/attachments/13155
 end
 ----------------------------------------------------------------------------------------------------------------------------
 rinix
+https://filerift.com/file/HNy1jwEWY0
+-
 https://rdd.latte.to/?channel=Live&binaryType=WindowsPlayer&version=version-67acd0f240534e7b
 --------------------------------------------Bypass key---------------------------------------------------
 https://bypass.vip/
