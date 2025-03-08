@@ -3,18 +3,18 @@
 video show case script!!!
 https://gofile.io/d/U0DkHh
 Reisurrk only(nick chính)       ---[[Update!!]]---
-h4n8zl0zh
-p9ko2fgdj
-1z5autg52
-n50idirmx
-xxhyjdnoq
+vi1ofj4kt
+tcwe1ql5m
+2ddh8zyjf
+31b6cl3pp
+dximo2ghw
+jtz26i9hk
+bskzizqwj
+fjw66egm1
+6pdzx03ln
+qfi9ummps
 end
 reisurk only(nick phụ)
-yd03oqn3p .
-havgvppe2 .
-0ya85osrk .
-fs69x23ml .
-hu2aumztl .
 t3ifevblh
 4k8015ggq
 Argon
@@ -22,7 +22,8 @@ https://getargon.xyz/
 ----------------------------Script-------------------------------
 Hop Boss dought king,rip_indra,râu đen free
 local urls = {
-    "https://raw.githubusercontent.com/LuaCrack/Min/refs/heads/main/MinHopBoss",
+    "https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/fixlag.lua",
+    "https://raw.githubusercontent.com/skibiditoiletgojo/Haidepzai/refs/heads/main/Teddy-Premium",
     "https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua",
 }
 
