@@ -3,8 +3,6 @@
 video show case script!!!
 https://gofile.io/d/U0DkHh
 Reisurrk only(nick chính)       ---[[Update!!]]---
-vi1ofj4kt
-tcwe1ql5m
 2ddh8zyjf
 31b6cl3pp
 dximo2ghw
@@ -34,10 +32,11 @@ for _, url in ipairs(urls) do
 end
 
 -------------------------------------Fix Lag Script+Fps-----------------------------------
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboLite/Script/main/FixLag.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/fixlag.lua"))()
 -------------------------------------------------------------------------------------------------------------------------------------
 combo up draco v4
-loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/kenon.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/kenon.lu"))()
 --------------------------------------------------------------------------------------------------------------------------------
 loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Pls-Donate.lua/refs/heads/main/stus.lua"))() 
 --------------------------------------------------------------------------------------------------------------------------------
