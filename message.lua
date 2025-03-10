@@ -1,197 +1,157 @@
--- Kenon Hub - Auto Chat Full Executor
-local messages = {" "}
-local delay = 35 -- Thời gian giữa các tin nhắn (mặc định 35 giây)
-local running = false
-local speedBoost = false -- Biến kiểm soát tăng tốc độ chạy
-local superSpeed = false -- Biến kiểm soát Super Chạy
-local speedValue = 16 -- Giá trị tốc độ chạy có thể chỉnh trong UI
-
--- Kiểm tra executor
-local isSupported = (syn and syn.request) or (secure_request) or (http and http.request) or (fluxus and fluxus.request) or request
-if not isSupported then
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Kenon Hub",
-        Text = "Executor không hỗ trợ!",
-        Duration = 5
-    })
-    return
+-- Tự động phát hiện executor để tối ưu code
+local executor = identifyexecutor and identifyexecutor() or "Unknown"
+if executor == "Synapse X" or executor == "Script-Ware" then
+    print("🔥 Đang chạy trên executor mạnh: " .. executor)
+else
+    print("⚠️ Đang chạy trên executor yếu: " .. executor .. ", tự động tối ưu...")
 end
 
--- Tạo UI
-local ScreenGui = Instance.new("ScreenGui")
-local MainFrame = Instance.new("Frame")
-local ToggleButton = Instance.new("ImageButton")
-local StatusLabel = Instance.new("TextButton")
-local TimeLabel = Instance.new("TextLabel")
-local OverlayText = Instance.new("TextLabel")
-local MessageBox = Instance.new("TextBox")
-local DelayBox = Instance.new("TextBox")
+local player = game.Players.LocalPlayer
+local tweenService = game:GetService("TweenService")
 
-ScreenGui.Parent = game:GetService("CoreGui")
-ScreenGui.Name = "KenonHubUI"
+-- UI chính
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.CoreGui
+screenGui.Name = "BloxFruitsHub"
 
-MainFrame.Parent = ScreenGui
-MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-MainFrame.Size = UDim2.new(0, 250, 0, 150)
-MainFrame.Position = UDim2.new(0.5, -125, 0.4, -75) -- Canh giữa màn hình
-MainFrame.Visible = false
+-- Main UI
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0, 400, 0, 350)
+mainFrame.Position = UDim2.new(0.5, -200, 0.5, -175)
+mainFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = screenGui
+mainFrame.Visible = false
+mainFrame.BackgroundTransparency = 1
 
-ToggleButton.Parent = ScreenGui
-ToggleButton.Size = UDim2.new(0, 50, 0, 50)
-ToggleButton.Position = UDim2.new(0.9, 0, 0.1, 0)
-ToggleButton.BackgroundTransparency = 1
-ToggleButton.Image = "rbxassetid://15377289473" -- Thay ID bằng logo của bạn
+-- Logo mở UI
+local logoButton = Instance.new("ImageButton")
+logoButton.Size = UDim2.new(0, 50, 0, 50)
+logoButton.Position = UDim2.new(0, 10, 0, 10)
+logoButton.BackgroundTransparency = 1
+logoButton.Image = "rbxassetid://126229665034471" -- ID ảnh logo
+logoButton.Parent = screenGui
 
--- Cho phép kéo thả logo
-local dragging, offset
-ToggleButton.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = true
-        offset = input.Position - ToggleButton.AbsolutePosition
+-- Hiệu ứng mở/tắt UI
+local isUIOpen = false
+local function toggleUI()
+    isUIOpen = not isUIOpen
+    if isUIOpen then
+        mainFrame.Visible = true
+        tweenService:Create(mainFrame, TweenInfo.new(0.5), {BackgroundTransparency = 0}):Play()
+    else
+        local fadeOut = tweenService:Create(mainFrame, TweenInfo.new(0.5), {BackgroundTransparency = 1})
+        fadeOut:Play()
+        fadeOut.Completed:Connect(function()
+            if not isUIOpen then mainFrame.Visible = false end
+        end)
+    end
+end
+logoButton.MouseButton1Click:Connect(toggleUI)
+
+-- Hàm tạo nút bật/tắt
+local function createToggle(name, position, callback)
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(0.8, 0, 0, 40)
+    button.Position = UDim2.new(0.1, 0, position, 0)
+    button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+    button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    button.TextSize = 20
+    button.Text = name
+    button.Parent = mainFrame
+    local enabled = false
+
+    button.MouseButton1Click:Connect(function()
+        enabled = not enabled
+        button.BackgroundColor3 = enabled and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(70, 70, 70)
+        callback(enabled)
+    end)
+end
+
+-- Auto Attack
+createToggle("⚔️ Auto Attack", 0.2, function(state)
+    while state do
+        local humanoid = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
+        if humanoid and humanoid.Health > 0 then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartAttack")
+        end
+        wait(0.1)
     end
 end)
 
-ToggleButton.InputEnded:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = false
+-- Auto Farm
+createToggle("🤖 Auto Farm", 0.35, function(state)
+    while state do
+        for _, enemy in pairs(workspace.Enemies:GetChildren()) do
+            if enemy:FindFirstChild("HumanoidRootPart") then
+                player.Character.HumanoidRootPart.CFrame = enemy.HumanoidRootPart.CFrame * CFrame.new(0, 0, 2)
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartAttack")
+            end
+        end
+        wait(0.1)
     end
 end)
 
-game:GetService("UserInputService").InputChanged:Connect(function(input)
-    if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
-        ToggleButton.Position = UDim2.new(0, input.Position.X - offset.X, 0, input.Position.Y - offset.Y)
+-- **Tăng tầm đánh**
+createToggle("📏 Tăng Tầm Đánh", 0.5, function(state)
+    if state then
+        for _, v in pairs(player.Character:GetChildren()) do
+            if v:IsA("Tool") and (v:FindFirstChild("Handle") or v:FindFirstChild("Gun")) then
+                v.Handle.Size = Vector3.new(60, 60, 60) -- Tăng phạm vi va chạm
+                if v:FindFirstChild("Hitbox") then
+                    v.Hitbox.Size = Vector3.new(60, 60, 60) -- Tăng hitbox
+                end
+            end
+        end
+    else
+        for _, v in pairs(player.Character:GetChildren()) do
+            if v:IsA("Tool") and v:FindFirstChild("Handle") then
+                v.Handle.Size = Vector3.new(1, 1, 1) -- Trả lại kích thước gốc
+                if v:FindFirstChild("Hitbox") then
+                    v.Hitbox.Size = Vector3.new(1, 1, 1)
+                end
+            end
+        end
     end
 end)
 
-StatusLabel.Parent = MainFrame
-StatusLabel.Text = "Auto Chat: OFF"
-StatusLabel.Size = UDim2.new(1, 0, 0.2, 0)
-StatusLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-StatusLabel.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-StatusLabel.BorderSizePixel = 0
-
-TimeLabel.Parent = MainFrame
-TimeLabel.Text = "Server Time: 00:00"
-TimeLabel.Size = UDim2.new(1, 0, 0.2, 0)
-TimeLabel.Position = UDim2.new(0, 0, 0.2, 0)
-TimeLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TimeLabel.BackgroundTransparency = 1
-
-MessageBox.Parent = MainFrame
-MessageBox.PlaceholderText = "Nhập tin nhắn..."
-MessageBox.Text = table.concat(messages, " | ")
-MessageBox.Size = UDim2.new(1, -10, 0.2, 0)
-MessageBox.Position = UDim2.new(0, 5, 0.4, 0)
-MessageBox.TextColor3 = Color3.fromRGB(0, 255, 0)
-MessageBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-
-DelayBox.Parent = MainFrame
-DelayBox.PlaceholderText = "Nhập delay (giây)..."
-DelayBox.Text = tostring(delay)
-DelayBox.Size = UDim2.new(1, -10, 0.2, 0)
-DelayBox.Position = UDim2.new(0, 5, 0.6, 0)
-DelayBox.TextColor3 = Color3.fromRGB(0, 255, 255)
-DelayBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-
--- Dòng chữ lớn giữa màn hình khi Auto Chat bật
-OverlayText.Parent = ScreenGui
-OverlayText.Text = ""
-OverlayText.Size = UDim2.new(1, 0, 0.1, 0)
-OverlayText.Position = UDim2.new(0, 0, 0.45, 0)
-OverlayText.TextColor3 = Color3.fromRGB(255, 0, 0)
-OverlayText.TextScaled = true
-OverlayText.BackgroundTransparency = 1
-OverlayText.Visible = false
-
--- Cập nhật thời gian trong server
-task.spawn(function()
-    while true do
-        local timeInMinutes = math.floor(workspace.DistributedGameTime / 60)
-        local hours = math.floor(timeInMinutes / 60)
-        local minutes = timeInMinutes % 60
-        TimeLabel.Text = string.format("Server Time: %02d:%02d", hours, minutes)
+-- ESP (Xuyên tường thấy Player)
+createToggle("👀 ESP Player", 0.65, function(state)
+    while state do
+        for _, v in pairs(game.Players:GetPlayers()) do
+            if v ~= player and not v.Character:FindFirstChild("ESPBox") then
+                local box = Instance.new("BoxHandleAdornment", v.Character)
+                box.Name = "ESPBox"
+                box.Adornee = v.Character:FindFirstChild("HumanoidRootPart")
+                box.Size = Vector3.new(4, 6, 4)
+                box.Color3 = Color3.new(1, 0, 0)
+                box.Transparency = 0.5
+                box.AlwaysOnTop = true
+                box.ZIndex = 5
+            end
+        end
         wait(1)
     end
 end)
 
--- Auto Chat function
-local function startAutoChat()
-    running = true
-    StatusLabel.Text = "Auto Chat: ON"
-    OverlayText.Visible = true
-
-    -- Cập nhật nội dung tin nhắn và delay từ UI
-    local inputMessages = MessageBox.Text
-    if inputMessages ~= "" then
-        messages = {}
-        for msg in string.gmatch(inputMessages, "[^|]+") do
-            table.insert(messages, msg:match("^%s*(.-)%s*$")) -- Loại bỏ khoảng trắng thừa
-        end
-    end
-
-    local inputDelay = tonumber(DelayBox.Text)
-    if inputDelay and inputDelay > 0 then
-        delay = inputDelay
-    end
-
-    while running do
-        for _, msg in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, "All")
-            wait(delay)
-        end
-    end
-end
-
-local function stopAutoChat()
-    running = false
-    StatusLabel.Text = "Auto Chat: OFF"
-    OverlayText.Visible = false
-end
-
--- Nút bật/tắt UI
-ToggleButton.MouseButton1Click:Connect(function()
-    MainFrame.Visible = not MainFrame.Visible
-end)
-
--- Nhấn vào StatusLabel để bật/tắt auto chat
-StatusLabel.MouseButton1Click:Connect(function()
-    if running then
-        stopAutoChat()
-    else
-        startAutoChat()
+-- Infinite Dash
+createToggle("⚡ Infinite Dash", 0.8, function(state)
+    while state do
+        player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -10)
+        wait(0.1)
     end
 end)
-SpeedBox.Parent = MainFrame
-SpeedBox.PlaceholderText = "Nhập tốc độ (1-100)..."
-SpeedBox.Text = tostring(speedValue)
-SpeedBox.Size = UDim2.new(1, -10, 0.15, 0)
-SpeedBox.Position = UDim2.new(0, 5, 0.9, 0)
-SpeedBox.TextColor3 = Color3.fromRGB(255, 165, 0)
-SpeedBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 
-local function toggleSuperSpeed()
-    superSpeed = not superSpeed
-    if superSpeed then
-        SuperSpeedLabel.Text = "Super Chạy: ON"
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
-    else
-        SuperSpeedLabel.Text = "Super Chạy: OFF"
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speedValue
-    end
-end
+-- Nút tắt script
+local closeButton = Instance.new("TextButton")
+closeButton.Size = UDim2.new(0.3, 0, 0, 40)
+closeButton.Position = UDim2.new(0.35, 0, 0.9, 0)
+closeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeButton.TextSize = 20
+closeButton.Text = "Tắt"
+closeButton.Parent = mainFrame
 
-SuperSpeedLabel.MouseButton1Click:Connect(function()
-    toggleSuperSpeed()
-end)
-
-SpeedBox.FocusLost:Connect(function()
-    local inputSpeed = tonumber(SpeedBox.Text)
-    if inputSpeed and inputSpeed >= 1 and inputSpeed <= 100 then
-        speedValue = inputSpeed
-        if not superSpeed then
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speedValue
-        end
-    else
-        SpeedBox.Text = tostring(speedValue)
-    end
+closeButton.MouseButton1Click:Connect(function()
+    screenGui:Destroy()
 end)
