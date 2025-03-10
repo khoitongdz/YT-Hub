@@ -119,15 +119,6 @@ createToggle("👀 ESP Player", 0.65, function(state)
         wait(1)
     end
 end)
-
--- Infinite Dash
-createToggle("⚡ Infinite Dash", 0.8, function(state)
-    while state do
-        player.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, -10)
-        wait(0.1)
-    end
-end)
-
 -- Nút tắt script
 local closeButton = Instance.new("TextButton")
 closeButton.Size = UDim2.new(0.3, 0, 0, 40)
