@@ -78,20 +78,6 @@ createToggle("⚔️ Auto Attack", 0.2, function(state)
         wait(0.1)
     end
 end)
-
--- Auto Farm
-createToggle("🤖 Auto Farm", 0.35, function(state)
-    while state do
-        for _, enemy in pairs(workspace.Enemies:GetChildren()) do
-            if enemy:FindFirstChild("HumanoidRootPart") then
-                player.Character.HumanoidRootPart.CFrame = enemy.HumanoidRootPart.CFrame * CFrame.new(0, 0, 2)
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartAttack")
-            end
-        end
-        wait(0.1)
-    end
-end)
-
 -- **Tăng tầm đánh**
 createToggle("📏 Tăng Tầm Đánh", 0.5, function(state)
     if state then
