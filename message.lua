@@ -68,67 +68,41 @@ local function createToggle(name, position, callback)
     end)
 end
 
--- Auto Attack
-createToggle("⚔️ Auto Attack", 0.2, function(state)
+-- Fast Attack Siêu Nhanh + Đánh Siêu Xa
+createButton("⚡ Fast Attack Siêu Nhanh", 0.35, function(state)
     while state do
-        local humanoid = player.Character and player.Character:FindFirstChildOfClass("Humanoid")
-        if humanoid and humanoid.Health > 0 then
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartAttack")
+        for _, enemy in pairs(workspace.Enemies:GetChildren()) do
+            if enemy:FindFirstChild("HumanoidRootPart") then
+                player.Character.HumanoidRootPart.CFrame = enemy.HumanoidRootPart.CFrame * CFrame.new(0, 0, -25) -- Tiếp cận từ khoảng cách xa
+                replicatedStorage.Remotes.CommF_:InvokeServer("StartAttack")
+            end
         end
-        wait(0.1)
+        wait(0.01) -- Giảm delay để đánh nhanh hơn
     end
 end)
--- **Tăng tầm đánh**
-createToggle("📏 Tăng Tầm Đánh", 0.5, function(state)
-    if state then
-        for _, v in pairs(player.Character:GetChildren()) do
-            if v:IsA("Tool") and (v:FindFirstChild("Handle") or v:FindFirstChild("Gun")) then
-                v.Handle.Size = Vector3.new(60, 60, 60) -- Tăng phạm vi va chạm
-                if v:FindFirstChild("Hitbox") then
-                    v.Hitbox.Size = Vector3.new(60, 60, 60) -- Tăng hitbox
-                end
-            end
-        end
-    else
-        for _, v in pairs(player.Character:GetChildren()) do
-            if v:IsA("Tool") and v:FindFirstChild("Handle") then
-                v.Handle.Size = Vector3.new(1, 1, 1) -- Trả lại kích thước gốc
-                if v:FindFirstChild("Hitbox") then
-                    v.Hitbox.Size = Vector3.new(1, 1, 1)
-                end
-            end
+
+-- Tăng tầm đánh
+createButton("📏 Tăng Tầm Đánh", 0.5, function(state)
+    for _, tool in pairs(player.Character:GetChildren()) do
+        if tool:IsA("Tool") and tool:FindFirstChild("Handle") then
+            tool.Handle.Size = state and Vector3.new(100, 100, 100) or Vector3.new(1, 1, 1)
         end
     end
 end)
 
--- ESP (Xuyên tường thấy Player)
-createToggle("👀 ESP Player", 0.65, function(state)
+-- ESP Player
+createButton("👀 ESP Player", 0.65, function(state)
     while state do
         for _, v in pairs(game.Players:GetPlayers()) do
             if v ~= player and not v.Character:FindFirstChild("ESPBox") then
                 local box = Instance.new("BoxHandleAdornment", v.Character)
-                box.Name = "ESPBox"
                 box.Adornee = v.Character:FindFirstChild("HumanoidRootPart")
                 box.Size = Vector3.new(4, 6, 4)
                 box.Color3 = Color3.new(1, 0, 0)
                 box.Transparency = 0.5
                 box.AlwaysOnTop = true
-                box.ZIndex = 5
             end
         end
         wait(1)
     end
-end)
--- Nút tắt script
-local closeButton = Instance.new("TextButton")
-closeButton.Size = UDim2.new(0.3, 0, 0, 40)
-closeButton.Position = UDim2.new(0.35, 0, 0.9, 0)
-closeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-closeButton.TextSize = 20
-closeButton.Text = "Tắt"
-closeButton.Parent = mainFrame
-
-closeButton.MouseButton1Click:Connect(function()
-    screenGui:Destroy()
 end)
