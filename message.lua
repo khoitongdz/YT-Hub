@@ -1,6 +1,3 @@
--- HOAN TOAN VIET LAI SCRIPT BLOX FRUITS
--- HO TRO FULL EXECUTOR + TOI UU HIEU SUAT
-
 local player = game.Players.LocalPlayer
 local runService = game:GetService("RunService")
 local replicatedStorage = game:GetService("ReplicatedStorage")
@@ -33,7 +30,7 @@ mainFrame.Parent = screenGui
 local titleLabel = Instance.new("TextLabel")
 titleLabel.Size = UDim2.new(1, 0, 0, 50)
 titleLabel.BackgroundTransparency = 1
-titleLabel.Text = "⚔️ Blox Fruits ⚔️"
+titleLabel.Text = "⚔️ Blox Fruits - Auto Hub ⚔️"
 titleLabel.TextColor3 = Color3.fromRGB(255, 255, 0)
 titleLabel.TextSize = 20
 titleLabel.Font = Enum.Font.GothamBold
@@ -41,7 +38,7 @@ titleLabel.Parent = mainFrame
 
 -- Logo mở UI
 local logoButton = Instance.new("ImageButton")
-logoButton.Size = UDim2.new(0, 60, 0, 60)
+logoButton.Size = UDim2.new(0, 30, 0, 30)
 logoButton.Position = UDim2.new(0, 20, 0, 20)
 logoButton.BackgroundTransparency = 1
 logoButton.Image = "rbxassetid://126229665034471"
