@@ -10,12 +10,12 @@ screenGui.Parent = game.CoreGui
 screenGui.Name = "BloxFruitsHubV2"
 
 local mainFrame = Instance.new("Frame")
-mainFrame.Size = UDim2.new(0, 450, 0, 400)
+mainFrame.Size = UDim2.new(0, 350, 0, 200)
 mainFrame.Position = UDim2.new(0.5, -225, 0.5, -200)
 mainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 mainFrame.BackgroundTransparency = 0.2
 mainFrame.BorderSizePixel = 2
-mainFrame.BorderColor3 = Color3.fromRGB(255, 255, 0)
+mainFrame.BorderColor3 = Color3.fromRGB(155, 155, 0)
 mainFrame.Active = true
 mainFrame.Draggable = true
 mainFrame.Parent = screenGui
