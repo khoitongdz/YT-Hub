@@ -7,6 +7,11 @@ local replicatedStorage = game:GetService("ReplicatedStorage")
 local tweenService = game:GetService("TweenService")
 local task = task -- Tối ưu hiệu suất
 
+-- Kiểm tra executor để đảm bảo tương thích
+local executor = "Unknown"
+if syn then executor = "Synapse X" elseif fluxus then executor = "Fluxus" elseif is_protosmasher_loaded then executor = "ProtoSmasher" elseif KRNL_LOADED then executor = "KRNL" elseif secure_load then executor = "Script-Ware" end
+print("[INFO] Script chạy trên executor: " .. executor)
+
 -- UI chinh (Giao diện mới)
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.CoreGui
@@ -79,13 +84,12 @@ local function createButton(name, position, callback)
     end)
 end
 
--- Fast Attack Siêu Nhanh + Đánh Siêu Xa (Tối ưu hóa)
+-- Fast Attack Siêu Nhanh + Đánh Siêu Xa (Tối ưu hóa, không dịch chuyển lung tung)
 createButton("⚡ Fast Attack Siêu Nhanh", 0.2, function(state)
     task.spawn(function()
         while state do
             for _, enemy in pairs(workspace.Enemies:GetChildren()) do
                 if enemy:FindFirstChild("HumanoidRootPart") and enemy:FindFirstChild("Humanoid") and enemy.Humanoid.Health > 0 then
-                    player.Character.HumanoidRootPart.CFrame = enemy.HumanoidRootPart.CFrame * CFrame.new(0, 0, -75) -- Đánh xa hơn
                     replicatedStorage.Remotes.CommF_:InvokeServer("StartAttack")
                 end
             end
