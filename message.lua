@@ -90,10 +90,12 @@ createButton("⚡ Fast Attack Siêu Nhanh", 0.2, function(state)
         while state do
             for _, enemy in pairs(workspace.Enemies:GetChildren()) do
                 if enemy:FindFirstChild("HumanoidRootPart") and enemy:FindFirstChild("Humanoid") and enemy.Humanoid.Health > 0 then
-                    replicatedStorage.Remotes.CommF_:InvokeServer("StartAttack")
+                    if (enemy.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 150 then
+                        replicatedStorage.Remotes.CommF_:InvokeServer("StartAttack")
+                    end
                 end
             end
-            task.wait(0.002) -- Giảm delay để đánh siêu nhanh
+            task.wait(0.002) -- Giảm delay để đánh siêu nhanh mà không dịch chuyển
         end
     end)
 end)
