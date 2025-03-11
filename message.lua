@@ -15,7 +15,7 @@ print("[INFO] Script chạy trên executor: " .. executor)
 -- UI chinh (Giao diện mới)
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.CoreGui
-screenGui.Name = "BloxFruitsHubV2"
+screenGui.Name = "KenonHubV2"
 
 -- Khung UI chính
 local mainFrame = Instance.new("Frame")
@@ -84,31 +84,31 @@ local function createButton(name, position, callback)
     end)
 end
 
--- Fast Attack Siêu Nhanh + Đánh Siêu Xa (Tối ưu hóa, không dịch chuyển lung tung)
+-- Fast Attack Siêu Nhanh + Tăng Tầm Đánh Tự Động
 createButton("⚡ Fast Attack Siêu Nhanh", 0.2, function(state)
     task.spawn(function()
         while state do
+            local closestEnemy = nil
+            local closestDistance = math.huge
+            
             for _, enemy in pairs(workspace.Enemies:GetChildren()) do
                 if enemy:FindFirstChild("HumanoidRootPart") and enemy:FindFirstChild("Humanoid") and enemy.Humanoid.Health > 0 then
-                    if (enemy.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 150 then
-                        replicatedStorage.Remotes.CommF_:InvokeServer("StartAttack")
+                    local distance = (enemy.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude
+                    if distance < closestDistance then
+                        closestEnemy = enemy
+                        closestDistance = distance
                     end
                 end
             end
-            task.wait(0.002) -- Giảm delay để đánh siêu nhanh mà không dịch chuyển
+            
+            if closestEnemy and closestDistance <= 300 then -- Tăng tầm đánh lên 300
+                player.Character.HumanoidRootPart.CFrame = CFrame.new(closestEnemy.HumanoidRootPart.Position) * CFrame.new(0, 0, -3)
+                replicatedStorage.Remotes.CommF_:InvokeServer("StartAttack")
+            end
+            
+            task.wait(0.002) -- Giảm delay để đánh siêu nhanh
         end
     end)
-end)
-
--- Tăng tầm đánh (Tối ưu hóa)
-createButton("📏 Tăng Tầm Đánh", 0.4, function(state)
-    for _, tool in pairs(player.Character:GetChildren()) do
-        if tool:IsA("Tool") and tool:FindFirstChild("Handle") then
-            pcall(function()
-                tool.Handle.Size = state and Vector3.new(150, 150, 150) or Vector3.new(1, 1, 1)
-            end)
-        end
-    end
 end)
 
 -- ESP Player (Tối ưu hóa hiệu suất)
