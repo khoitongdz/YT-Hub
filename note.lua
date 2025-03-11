@@ -25,7 +25,8 @@ for _, url in ipairs(urls) do
         loadstring(game:HttpGet(url))()
     end)
 end
-
+------------------------------script mới----------------------------------------------------------------------------------
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Overgustx2/Main/refs/heads/main/BloxFruits_25.html"))()
 -------------------------------------Fix Lag Script+Fps-----------------------------------
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboLite/Script/main/FixLag.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/Fixlag.Lua"))()
