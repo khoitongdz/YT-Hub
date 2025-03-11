@@ -12,7 +12,7 @@ local executor = "Unknown"
 if syn then executor = "Synapse X" elseif fluxus then executor = "Fluxus" elseif is_protosmasher_loaded then executor = "ProtoSmasher" elseif KRNL_LOADED then executor = "KRNL" elseif secure_load then executor = "Script-Ware" end
 print("[INFO] Script chạy trên executor: " .. executor)
 
--- UI chinh (Giao diện mới)
+-- UI chính (Giao diện mới)
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.CoreGui
 screenGui.Name = "BloxFruitsHubV2"
@@ -33,7 +33,7 @@ mainFrame.Parent = screenGui
 local titleLabel = Instance.new("TextLabel")
 titleLabel.Size = UDim2.new(1, 0, 0, 50)
 titleLabel.BackgroundTransparency = 1
-titleLabel.Text = "⚔️ Blox Fruits - Kenon Hub ⚔️"
+titleLabel.Text = "⚔️ Blox Fruits ⚔️"
 titleLabel.TextColor3 = Color3.fromRGB(255, 255, 0)
 titleLabel.TextSize = 20
 titleLabel.Font = Enum.Font.GothamBold
@@ -84,7 +84,7 @@ local function createButton(name, position, callback)
     end)
 end
 
--- Fast Attack Siêu Nhanh + Tự động đánh nhanh khi bay đến quái + Đánh xa hơn khi trên đầu quái
+-- Fast Attack Siêu Nhanh + Tự động đánh nhanh khi bay đến quái + Giữ nguyên vị trí khi đánh
 createButton("⚡ Fast Attack Siêu Nhanh", 0.2, function(state)
     task.spawn(function()
         while state do
@@ -105,36 +105,13 @@ createButton("⚡ Fast Attack Siêu Nhanh", 0.2, function(state)
                 local attackPosition = closestEnemy.HumanoidRootPart.Position + Vector3.new(0, 15, 0) -- Bay cao hơn đầu quái
                 tweenService:Create(player.Character.HumanoidRootPart, TweenInfo.new(0.3), {CFrame = CFrame.new(attackPosition)}):Play()
                 
-                for _ = 1, 7 do -- Đánh nhanh 7 lần mỗi chu kỳ
+                while closestEnemy and closestEnemy.Humanoid.Health > 0 and state do
                     replicatedStorage.Remotes.CommF_:InvokeServer("StartAttack")
-                    task.wait(0.0005)
+                    task.wait(0.0001) -- Giảm delay đánh nhanh hơn
                 end
             end
             
-            task.wait(0.001) -- Giảm delay để đánh siêu nhanh
-        end
-    end)
-end)
-
--- ESP Player (Tối ưu hóa hiệu suất)
-createButton("👀 ESP Player", 0.6, function(state)
-    task.spawn(function()
-        while state do
-            for _, v in pairs(game.Players:GetPlayers()) do
-                if v ~= player and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
-                    if not v.Character:FindFirstChild("ESPBox") then
-                        local box = Instance.new("BoxHandleAdornment")
-                        box.Adornee = v.Character:FindFirstChild("HumanoidRootPart")
-                        box.Size = Vector3.new(4, 6, 4)
-                        box.Color3 = Color3.new(1, 0, 0)
-                        box.Transparency = 0.5
-                        box.AlwaysOnTop = true
-                        box.Name = "ESPBox"
-                        box.Parent = v.Character
-                    end
-                end
-            end
-            task.wait(1)
+            task.wait(0.0005) -- Giảm thời gian chờ để tăng hiệu suất
         end
     end)
 end)
