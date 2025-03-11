@@ -3,18 +3,12 @@
 video show case script!!!
 https://gofile.io/d/U0DkHh
 Reisurrk only(nick chính)       ---[[Update!!]]---
-2ddh8zyjf
-31b6cl3pp
-dximo2ghw
 jtz26i9hk
 bskzizqwj
 fjw66egm1
 6pdzx03ln
 qfi9ummps
 end
-reisurk only(nick phụ)
-t3ifevblh
-4k8015ggq
 Argon
 https://getargon.xyz/
 ----------------------------Script-------------------------------
@@ -33,10 +27,10 @@ end
 
 -------------------------------------Fix Lag Script+Fps-----------------------------------
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboLite/Script/main/FixLag.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/fixlag.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/Fixlag.Lua"))()
 -------------------------------------------------------------------------------------------------------------------------------------
 combo up draco v4
-loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/kenon.lu"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/kenon.lua"))()
 --------------------------------------------------------------------------------------------------------------------------------
 loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Pls-Donate.lua/refs/heads/main/stus.lua"))() 
 --------------------------------------------------------------------------------------------------------------------------------
