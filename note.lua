@@ -1,8 +1,8 @@
 --https://www.hackbloxfruitpc.com/--
 ---[[discord:https://discord.gg/w26VGWmMPb]]---
 ---kiệt lặc---
-video show case script!!!
-https://gofile.io/d/U0DkHh
+Video auto bouty show case!
+https://gofile.io/d/XBdm0H
 Reisurrk only(nick chính)       ---[[Update!!]]---
 jtz26i9hk
 bskzizqwj
