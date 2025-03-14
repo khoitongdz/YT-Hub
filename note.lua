@@ -4,12 +4,12 @@
 Video auto bouty show case!
 https://gofile.io/d/XBdm0H
 Reisurrk only(nick chính)       ---[[Update!!]]---
-jtz26i9hk
 bskzizqwj
 fjw66egm1
 6pdzx03ln
 qfi9ummps
 end
+Tusukikaisen
 Argon
 https://getargon.xyz/
 ----------------------------Script-------------------------------
@@ -51,13 +51,13 @@ https://bloxstrap.org/
 velocity
 https://gofile.io/d/QXR9XY
 -------------------------------------------------------------------------------------------------------------------------------------------
-how to tắt cái căn cột này https://media.discordapp.net/attachments/1315548995493433375/1343233792311038084/image.png?ex=67bc8774&is=67bb35f4&hm=5796fbb745357145c042bb77e93f078956dd05a049c0df340feb3b5a5d1af138&=&format=webp&quality=lossless&width=394&height=303
+how to https://media.discordapp.net/attachments/1315548995493433375/1343233792311038084/image.png?ex=67bc8774&is=67bb35f4&hm=5796fbb745357145c042bb77e93f078956dd05a049c0df340feb3b5a5d1af138&=&format=webp&quality=lossless&width=394&height=303
 ấn nút: INS ---trên bàn phím
 end
 ----------------------------------------------------------------------------------------------------------------------------
-rinix
-https://filerift.com/file/HNy1jwEWY0
--
+ronix
+https://filerift.com/file/aqRtl1fmEK
+
 https://rdd.latte.to/?channel=Live&binaryType=WindowsPlayer&version=version-67acd0f240534e7b
 --------------------------------------------Bypass key---------------------------------------------------
 https://bypass.vip/
