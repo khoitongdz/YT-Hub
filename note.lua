@@ -31,7 +31,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboLite/Script/main
 loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/Fixlag.Lua"))()
 -------------------------------------------------------------------------------------------------------------------------------------
 combo up draco v4
-loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/kenon.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Kenon-/refs/heads/main/kenon.lu"))()   ---hà óc vật hà bú cu lanh hà nô lẹ da đen
 --------------------------------------------------------------------------------------------------------------------------------
 loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/Pls-Donate.lua/refs/heads/main/stus.lua"))() 
 --------------------------------------------------------------------------------------------------------------------------------
