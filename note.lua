@@ -45,18 +45,21 @@ getgenv().Auto_Execute = false
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/main.lua"))()
 end 
 -------------------------------------------------FILEHack---------------------------------------------------------------
+Blox trap 4.2.1
+https://gofile.io/d/JK0EfM
+
 bloxtrap 2.8.6
 https://bloxstrap.org/
 -------------------------------------------------------------------------------------------------------------------------------
 velocity
-https://gofile.io/d/QXR9XY
+
 -------------------------------------------------------------------------------------------------------------------------------------------
 how to https://media.discordapp.net/attachments/1315548995493433375/1343233792311038084/image.png?ex=67bc8774&is=67bb35f4&hm=5796fbb745357145c042bb77e93f078956dd05a049c0df340feb3b5a5d1af138&=&format=webp&quality=lossless&width=394&height=303
 ấn nút: INS ---trên bàn phím
 end
 ----------------------------------------------------------------------------------------------------------------------------
 ronix
-https://filerift.com/file/aqRtl1fmEK
+https://gofile.io/d/rhCl8K
 
 https://rdd.latte.to/?channel=Live&binaryType=WindowsPlayer&version=version-67acd0f240534e7b
 --------------------------------------------Bypass key---------------------------------------------------
