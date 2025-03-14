@@ -4,7 +4,6 @@
 Video auto bouty show case!
 https://gofile.io/d/XBdm0H
 Reisurrk only(nick chính)       ---[[Update!!]]---
-bskzizqwj
 fjw66egm1
 6pdzx03ln
 qfi9ummps
