@@ -4,7 +4,16 @@
 Video auto bouty show case!
 https://gofile.io/d/XBdm0H
 Reisurrk only(nick chính)       ---[[Update!!]]---
-qfi9ummps
+y0t8en5lo
+43gs3y05n
+h2d9ksxqm
+w4mwfn9hp
+hhhtjvh4d
+jx5yc1dy0
+1fc2t8c7g
+cb4g989we
+pjz1wss5z
+y46ovj9p8
 end
 znylek8hh --phụ
 ilcx0zmv8
@@ -59,7 +68,7 @@ bloxtrap 2.8.6
 https://bloxstrap.org/
 -------------------------------------------------------------------------------------------------------------------------------
 velocity
-
+https://www.mediafire.com/file/4hpbcn0urijyfcd/Velocity_0_2_7_.7z/file
 -------------------------------------------------------------------------------------------------------------------------------------------
 how to https://media.discordapp.net/attachments/1315548995493433375/1343233792311038084/image.png?ex=67bc8774&is=67bb35f4&hm=5796fbb745357145c042bb77e93f078956dd05a049c0df340feb3b5a5d1af138&=&format=webp&quality=lossless&width=394&height=303
 ấn nút: INS ---trên bàn phím
