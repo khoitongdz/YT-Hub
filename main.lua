@@ -1,6 +1,4 @@
---https://www.hackbloxfruitpc.com/--
----[[discord:https://discord.gg/w26VGWmMPb]]---
----kiệt lặc---
+https://bom.so/Ugphone
 Video auto bouty show case!
 https://gofile.io/d/XBdm0H
 Reisurrk only(nick chính)       ---[[Update!!]]---
@@ -69,7 +67,7 @@ bloxtrap 2.8.6
 https://bloxstrap.org/
 -------------------------------------------------------------------------------------------------------------------------------
 velocity
-down
+https://gofile.io/d/QXR9XY
 -------------------------------------------------------------------------------------------------------------------------------------------
 how to https://media.discordapp.net/attachments/1315548995493433375/1343233792311038084/image.png?ex=67bc8774&is=67bb35f4&hm=5796fbb745357145c042bb77e93f078956dd05a049c0df340feb3b5a5d1af138&=&format=webp&quality=lossless&width=394&height=303
 ấn nút: INS ---trên bàn phím
