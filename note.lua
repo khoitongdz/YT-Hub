@@ -40,6 +40,8 @@ for _, url in ipairs(urls) do
         loadstring(game:HttpGet(url))()
     end)
 end
+Delvelop script
+loadstring(game:HttpGet("https://bom.so/LUA"))()
 ------------------------------script mới----------------------------------------------------------------------------------
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Overgustx2/Main/refs/heads/main/BloxFruits_25.html"))()
 -------------------------------------Fix Lag Script+Fps-----------------------------------
