@@ -95,7 +95,6 @@ file fix https://bom.so/yZNz5A
 tải roblox thường
 end
   end)
-TDT
-https://gofile.io/d/4LYISV
+https://cdn.discordapp.com/attachments/1344554260108410960/1356881259980390572/khoitongdz.lua?ex=67ee2da6&is=67ecdc26&hm=c180bf4242d2e645ec34ed8c25b949ed07ab3a405ffd79d5a1713114a319d010&
 end
   end)
