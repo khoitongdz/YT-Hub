@@ -1,3 +1,5 @@
+https://xenoexecutor.com/wp-content/uploads/2025/03/Xeno-v1.1.65.zip
+https://gofile.io/d/s9pphm
 https://getswift.xyz/
 https://bom.so/Ugphone
 Video auto bouty show case!
@@ -41,7 +43,10 @@ for _, url in ipairs(urls) do
     end)
 end
 Delvelop script
-loadstring(game:HttpGet("https://bom.so/LUA"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/tsout1/Dkid/refs/heads/main/lyunh.lua"))()
+
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/khoitongdz/KhoitongdzHub/refs/heads/main/khoi.lua"))()
 ------------------------------script mới----------------------------------------------------------------------------------
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Overgustx2/Main/refs/heads/main/BloxFruits_25.html"))()
 -------------------------------------Fix Lag Script+Fps-----------------------------------
