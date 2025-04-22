@@ -15,16 +15,6 @@ wul8zpna9
 k373598x9
 k3cz6bu76
 vkm59dn2z
-znylek8hh --phụ
-ilcx0zmv8
-f0j7hu37x
-uxbtuchzz
-ol7yc03x9
-rqthnmatj
-6agudfi3c
-dk4heg8cg
-thb4d19zf
-w4x4aqy1m
 Tusukikaisen
 Argon
 https://getargon.xyz/
