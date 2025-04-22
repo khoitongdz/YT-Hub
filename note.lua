@@ -5,17 +5,16 @@ https://bom.so/Ugphone
 Video auto bouty show case!
 https://gofile.io/d/XBdm0H
 Reisurrk only(nick chính)       ---[[Update!!]]---
-y0t8en5lo
-43gs3y05n
-h2d9ksxqm
-w4mwfn9hp
-hhhtjvh4d
-jx5yc1dy0
-1fc2t8c7g
-cb4g989we
-pjz1wss5z
-y46ovj9p8
-end
+ln7t5k0id
+p72x4tsb1
+bv3f99432
+tf00ajk4e
+xz86r8oql
+7aht4f0um
+wul8zpna9
+k373598x9
+k3cz6bu76
+vkm59dn2z
 znylek8hh --phụ
 ilcx0zmv8
 f0j7hu37x
